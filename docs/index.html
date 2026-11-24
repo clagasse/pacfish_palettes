@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pacfishpalettes — BC &amp; Pacific Region Marine Colour Palette Studio</title>
+  <meta name="description" content="Interactive R colour palette studio featuring bespoke British Columbia groundfish, Pacific salmon, pelagic, shellfish, and Pacific Region fisheries palettes alongside flagship R colour packages with live CVD auditing and fisheries plot previews." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-brand">
+        <div class="brand-mark" aria-hidden="true" id="hero-logo"></div>
+        <div>
+          <div class="hero-eyebrow">R PACKAGE &amp; INTERACTIVE COLOUR STUDIO</div>
+          <h1>pacfishpalettes</h1>
+          <p class="hero-sub">
+            Bespoke colour palettes for <strong>British Columbia groundfish, Pacific salmon, pelagics &amp; shellfish</strong>
+            plus curated flagship palettes from top R packages — with real-time CVD simulation,
+            <code>gfsynopsis</code> fisheries plot previews, PhyloPic silhouettes, and 1-click R code.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" id="btn-open-install" type="button">Install in R</button>
+        <button class="btn btn-secondary" id="btn-open-mixer" type="button">
+          Mix Tray <span class="badge-count" id="mixer-count">0</span>
+        </button>
+        <button class="btn btn-ghost" id="btn-theme-toggle" type="button" title="Toggle light / dark interface">
+          <span id="theme-icon">☀</span> Theme
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-stats" id="hero-stats">
+      <!-- Populated dynamically -->
+    </div>
+  </header>
+
+  <section class="intro-wrap" id="intro-section" aria-label="Introduction and quick start guide">
+    <div class="intro-card">
+      <div class="intro-head">
+        <div>
+          <h2>Choosing clear, accessible colours for BC marine science &amp; fisheries</h2>
+          <p class="intro-lead">
+            <strong>pacfishpalettes</strong> helps fisheries scientists, analysts, and communicators pick consistent,
+            publication-ready colour palettes without guessing hex codes or accidentally using colours that blur
+            together for colourblind readers. Every species palette is inspired by real British Columbia and
+            North Pacific marine life, while every guild, fleet, survey, and DFO branch palette is mathematically
+            tested for colour-vision accessibility.
+          </p>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-toggle-intro" aria-expanded="true">Hide Guide</button>
+      </div>
+      <div class="intro-steps" id="intro-steps">
+        <div class="intro-step">
+          <span class="step-num">1</span>
+          <div>
+            <strong>Pick a collection or search</strong>
+            <p>Browse individual <em>BC species</em> (groundfish, salmon, pelagics, shellfish), ready-made <em>Species Guilds</em>, <em>Fisheries &amp; Management</em> sets (fleets, surveys, DFO branches), or flagship <em>R packages</em>.</p>
+          </div>
+        </div>
+        <div class="intro-step">
+          <span class="step-num">2</span>
+          <div>
+            <strong>Preview on fisheries charts &amp; test accessibility</strong>
+            <p>Click any card to test it on survey index, catch, spatial CPUE, and length plots. Switch the <em>Vision Simulator</em> above to see how every swatch and chart looks under colourblindness.</p>
+          </div>
+        </div>
+        <div class="intro-step">
+          <span class="step-num">3</span>
+          <div>
+            <strong>Copy straight into R (with or without installing)</strong>
+            <p>Export ready-to-paste <code>pacfishpalettes</code> scales, zero-install standalone <code>ggplot2</code> vectors, or <code>paletteer</code> code—or click <strong>+</strong> on swatches to build your own custom set in the Mix Tray.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="toolbar-wrap" aria-label="Palette filters and vision simulator">
+    <div class="toolbar">
+      <div class="collection-tabs" id="collection-tabs" role="tablist" aria-label="Palette collections">
+        <!-- Populated dynamically -->
+      </div>
+
+      <div class="filter-row">
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Search species, scientific name, DFO code (e.g. 442), family, or R package..."
+            autocomplete="off"
+          />
+          <button class="search-clear" id="search-clear" type="button" hidden aria-label="Clear search">×</button>
+        </div>
+
+        <div class="segmented" id="type-filter" role="group" aria-label="Palette type">
+          <button type="button" class="seg-btn active" data-type="all">All Types</button>
+          <button type="button" class="seg-btn" data-type="discrete">Discrete</button>
+          <button type="button" class="seg-btn" data-type="sequential">Sequential</button>
+          <button type="button" class="seg-btn" data-type="diverging">Diverging</button>
+        </div>
+
+        <select id="family-select" class="select-input" aria-label="Filter by family or R package">
+          <option value="all">All Families &amp; Packages</option>
+        </select>
+
+        <label class="toggle-chip" title="Show only palettes passing OKLab CVD separability criteria">
+          <input type="checkbox" id="cvd-only-toggle" />
+          <span>CVD-Safe Only</span>
+        </label>
+      </div>
+
+      <div class="vision-row">
+        <div class="vision-label">
+          <strong>Vision Simulator:</strong>
+          <span class="vision-hint">Live Machado (2009) simulation across all swatches &amp; plots</span>
+        </div>
+        <div class="segmented vision-pills" id="cvd-mode-group" role="group" aria-label="Colour vision deficiency simulation">
+          <button type="button" class="seg-btn active" data-cvd="normal">Normal</button>
+          <button type="button" class="seg-btn" data-cvd="deutan">Deuteranopia</button>
+          <button type="button" class="seg-btn" data-cvd="protan">Protanopia</button>
+          <button type="button" class="seg-btn" data-cvd="tritan">Tritanopia</button>
+          <button type="button" class="seg-btn" data-cvd="achromatopsia">Grayscale</button>
+        </div>
+        <div class="results-count" id="results-count"></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="catalog-wrap">
+    <div class="palette-grid" id="palette-grid" aria-live="polite">
+      <!-- Palette cards rendered dynamically -->
+    </div>
+    <div class="empty-state" id="empty-state" hidden>
+      <h3>No palettes match those filters</h3>
+      <p>Try clearing your search query or disabling the CVD-Safe Only filter.</p>
+      <button type="button" class="btn btn-primary" id="btn-reset-filters">Reset all filters</button>
+    </div>
+  </main>
+
+  <!-- Interactive Palette Workbench Modal -->
+  <div class="modal-backdrop" id="workbench-backdrop" hidden>
+    <div class="workbench-modal" role="dialog" aria-modal="true" aria-labelledby="wb-title">
+      <div class="wb-header">
+        <div class="wb-title-block">
+          <div class="wb-sil" id="wb-silhouette"></div>
+          <div>
+            <div class="wb-eyebrow" id="wb-eyebrow"></div>
+            <h2 id="wb-title"></h2>
+            <p class="wb-subtitle" id="wb-subtitle"></p>
+          </div>
+        </div>
+        <div class="wb-header-actions">
+          <button type="button" class="btn btn-secondary btn-sm" id="wb-add-all">+ Add All to Mix</button>
+          <button type="button" class="btn-icon" id="wb-close" aria-label="Close workbench">×</button>
+        </div>
+      </div>
+
+      <div class="wb-body">
+        <!-- Swatch Strip & Interactive Controls -->
+        <section class="wb-section">
+          <div class="wb-controls">
+            <label class="ctrl-item">
+              <span>Colours (<code>n</code>): <strong id="wb-n-val">6</strong></span>
+              <input type="range" id="wb-n" min="2" max="14" value="6" />
+            </label>
+            <label class="ctrl-item">
+              <span>Begin: <strong id="wb-begin-val">0.00</strong></span>
+              <input type="range" id="wb-begin" min="0" max="0.85" step="0.05" value="0" />
+            </label>
+            <label class="ctrl-item">
+              <span>End: <strong id="wb-end-val">1.00</strong></span>
+              <input type="range" id="wb-end" min="0.15" max="1" step="0.05" value="1" />
+            </label>
+            <label class="toggle-chip">
+              <input type="checkbox" id="wb-reverse" />
+              <span>Reverse</span>
+            </label>
+            <label class="toggle-chip">
+              <input type="checkbox" id="wb-plot-light" checked />
+              <span>Light Plot Canvas</span>
+            </label>
+          </div>
+
+          <div class="wb-swatches" id="wb-swatches"></div>
+          <p class="wb-notes" id="wb-notes"></p>
+        </section>
+
+        <!-- Live Fisheries Plot Previews -->
+        <section class="wb-section">
+          <div class="section-head">
+            <h3>Live Fisheries &amp; <code>gfsynopsis</code> Plot Previews</h3>
+            <div class="segmented" id="wb-chart-tabs">
+              <button type="button" class="seg-btn active" data-chart="survey">Survey Index</button>
+              <button type="button" class="seg-btn" data-chart="catch">Multi-Species Catch</button>
+              <button type="button" class="seg-btn" data-chart="spatial">Spatial CPUE Grid</button>
+              <button type="button" class="seg-btn" data-chart="length">Length Composition</button>
+            </div>
+          </div>
+          <div class="chart-stage" id="wb-chart-stage"></div>
+        </section>
+
+        <!-- Two-column lower grid: CVD Audit + R Code Export -->
+        <div class="wb-lower-grid">
+          <section class="wb-section">
+            <div class="section-head">
+              <h3>Perceptual &amp; CVD Accessibility Audit</h3>
+              <span class="cvd-pill" id="wb-cvd-badge"></span>
+            </div>
+            <div class="audit-metrics" id="wb-audit-metrics"></div>
+            <div class="cvd-strips" id="wb-cvd-strips"></div>
+            <div class="lightness-chart" id="wb-lightness-chart"></div>
+          </section>
+
+          <section class="wb-section">
+            <div class="section-head">
+              <h3>R Workflow Code Export</h3>
+              <button type="button" class="btn btn-primary btn-sm" id="wb-copy-code">Copy Code</button>
+            </div>
+            <div class="segmented code-tabs" id="wb-code-tabs">
+              <button type="button" class="seg-btn active" data-fmt="pacfish">pacfishpalettes</button>
+              <button type="button" class="seg-btn" data-fmt="ggplot">ggplot2 Manual</button>
+              <button type="button" class="seg-btn" data-fmt="upstream">R Pkg / paletteer</button>
+              <button type="button" class="seg-btn" data-fmt="named">Named Vector</button>
+              <button type="button" class="seg-btn" data-fmt="hex">HEX / CSS</button>
+            </div>
+            <pre class="code-box"><code id="wb-code-output"></code></pre>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Mix & Match Palette Composer Drawer -->
+  <aside class="mixer-drawer" id="mixer-drawer" hidden aria-label="Custom palette mixer">
+    <div class="mixer-header">
+      <div>
+        <h3>Custom BC Palette Composer</h3>
+        <p class="mixer-sub">Click <strong>+</strong> on any swatch to mix colours &amp; test combined CVD separability</p>
+      </div>
+      <div class="mixer-actions">
+        <button type="button" class="btn btn-secondary btn-sm" id="mixer-preview-btn">Preview in Charts</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="mixer-clear-btn">Clear</button>
+        <button type="button" class="btn-icon" id="mixer-close-btn" aria-label="Close mixer">×</button>
+      </div>
+    </div>
+    <div class="mixer-body">
+      <div class="mixer-swatches" id="mixer-swatches"></div>
+      <div class="mixer-audit" id="mixer-audit"></div>
+      <div class="mixer-code-wrap">
+        <pre class="code-box code-box-sm"><code id="mixer-code"></code></pre>
+        <button type="button" class="btn btn-primary btn-sm" id="mixer-copy-btn">Copy R Vector</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Install / Quickstart Modal -->
+  <div class="modal-backdrop" id="install-backdrop" hidden>
+    <div class="install-modal" role="dialog" aria-modal="true" aria-labelledby="install-title">
+      <div class="wb-header">
+        <h2 id="install-title">Using <code>pacfishpalettes</code> in R</h2>
+        <button type="button" class="btn-icon" id="install-close" aria-label="Close install dialog">×</button>
+      </div>
+      <div class="install-body">
+        <p>Install the lightweight R package directly from GitHub (base R core with optional <code>ggplot2</code>, <code>paletteer</code>, and <code>rphylopic</code> support):</p>
+        <pre class="code-box"><code id="install-snippet"># Install from GitHub
+remotes::install_github("pacfishpalettes/pacfishpalettes")
+
+library(pacfishpalettes)
+library(ggplot2)
+
+# Lookup by common name, scientific name, or DFO species code
+pac_pal("yelloweye_rockfish")
+pac_pal("Sebastes_ruberrimus", n = 5)
+pac_pal(442)  # Yelloweye Rockfish HART/DFO code
+
+# Drop-in ggplot2 scales &amp; gfsynopsis helpers
+cols &lt;- pac_species_colors(c("Chinook Salmon", "Sockeye Salmon", "Coho Salmon"))
+surv &lt;- pac_survey_colors()
+
+ggplot(df, aes(year, biomass, colour = survey)) +
+  geom_line(linewidth = 1) +
+  scale_colour_pac_d("bc_synoptic_surveys") +
+  add_pac_shape("sebastes", xmin = 2018, xmax = 2023, ymin = 80, ymax = 100)
+
+# Audit any custom palette for colorblind safety in pure R
+pac_check_cvd("bc_groundfish_guilds")</code></pre>
+        <div class="install-footer">
+          <button type="button" class="btn btn-primary" id="btn-copy-install">Copy Quickstart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>pacfishpalettes</strong> — Built for British Columbia &amp; Pacific Region marine science and R workflows.
+        Inspired by <a href="https://github.com/nschiett/fishualize" target="_blank" rel="noopener">fishualize</a>,
+        <a href="https://github.com/pbs-assess/gfsynopsis" target="_blank" rel="noopener">gfsynopsis</a>,
+        <a href="https://github.com/EmilHvitfeldt/paletteer" target="_blank" rel="noopener">paletteer</a>, and
+        <a href="https://github.com/cols4all/cols4all-R" target="_blank" rel="noopener">cols4all</a>.
+      </div>
+      <div class="footer-credit">
+        Taxon silhouettes sourced from <a href="https://www.phylopic.org/" target="_blank" rel="noopener">PhyloPic</a> (CC0 1.0 &amp; CC BY contributors; see <code>inst/silhouettes/ATTRIBUTION.md</code>).
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

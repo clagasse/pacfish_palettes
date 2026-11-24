@@ -1,0 +1,200 @@
+{
+  "sebastes": {
+    "id": "sebastes",
+    "label": "Rockfish",
+    "taxon": "Sebastes",
+    "source": "phylopic",
+    "phylopic_uuid": "edd45a3e-1780-4579-83d8-648c93abfdda",
+    "attribution": "PhyloPic contributor",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "sebastes.svg"
+  },
+  "flatfish": {
+    "id": "flatfish",
+    "label": "Flatfish",
+    "taxon": "Pleuronectidae",
+    "source": "phylopic",
+    "phylopic_uuid": "3cfd4c57-9a83-47b0-a113-6379bdb28ab2",
+    "attribution": "PhyloPic contributor",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "flatfish.svg"
+  },
+  "lingcod": {
+    "id": "lingcod",
+    "label": "Lingcod / Hexagrammid",
+    "taxon": "Ophiodon elongatus",
+    "source": "phylopic",
+    "phylopic_uuid": "96273a43-84d7-477a-9132-0c3f01565a57",
+    "attribution": "Harold N Eyster",
+    "license": "CC BY",
+    "license_url": "https://creativecommons.org/licenses/by/3.0/",
+    "file": "lingcod.svg"
+  },
+  "sablefish": {
+    "id": "sablefish",
+    "label": "Sablefish",
+    "taxon": "Anoplopoma fimbria",
+    "source": "phylopic",
+    "phylopic_uuid": "4311ad49-7c31-4dc4-b189-f28d8515cc48",
+    "attribution": "Tessa Rehill",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "sablefish.svg"
+  },
+  "gadid": {
+    "id": "gadid",
+    "label": "Cod / Hake",
+    "taxon": "Gadus",
+    "source": "phylopic",
+    "phylopic_uuid": "483fe84e-23fb-4098-8cbf-9ba2d7e6b779",
+    "attribution": "Alexandra Hahn",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "gadid.svg"
+  },
+  "ratfish": {
+    "id": "ratfish",
+    "label": "Spotted Ratfish",
+    "taxon": "Hydrolagus colliei",
+    "source": "phylopic",
+    "phylopic_uuid": "83044334-ecb4-4156-85f5-519c11d4a37d",
+    "attribution": "Richard J. Harris and Kurtis Wothe",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "ratfish.svg"
+  },
+  "skate": {
+    "id": "skate",
+    "label": "Skate",
+    "taxon": "Beringraja",
+    "source": "phylopic",
+    "phylopic_uuid": "6b1b1dec-5ca1-4854-8ad0-7e394392c6a1",
+    "attribution": "Tessa Rehill",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "skate.svg"
+  },
+  "shark": {
+    "id": "shark",
+    "label": "Spiny Dogfish",
+    "taxon": "Squalus",
+    "source": "phylopic",
+    "phylopic_uuid": "db0c9e04-0a26-4991-87a2-2b2ce967b924",
+    "attribution": "PhyloPic contributor",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "shark.svg"
+  },
+  "salmon": {
+    "id": "salmon",
+    "label": "Pacific Salmon",
+    "taxon": "Oncorhynchus tshawytscha",
+    "source": "phylopic",
+    "phylopic_uuid": "9150be88-6910-4374-aa54-a7f8f3d79fb6",
+    "attribution": "Xavier Giroux-Bougard",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "file": "salmon.svg"
+  },
+  "herring": {
+    "id": "herring",
+    "label": "Pacific Herring / Forage",
+    "taxon": "Clupea pallasii",
+    "source": "phylopic",
+    "phylopic_uuid": "0b89df58-7eae-40c5-9676-d35e3449afb2",
+    "attribution": "xgirouxb",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "file": "herring.svg"
+  },
+  "tuna": {
+    "id": "tuna",
+    "label": "Albacore Tuna / Mackerel",
+    "taxon": "Thunnus alalunga",
+    "source": "phylopic",
+    "phylopic_uuid": "7203cf4c-a4c7-4e4d-82b4-cf6dd53af298",
+    "attribution": "Felix Vaux and Kurtis Wothe",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "tuna.svg"
+  },
+  "crab": {
+    "id": "crab",
+    "label": "Dungeness Crab",
+    "taxon": "Metacarcinus magister",
+    "source": "phylopic",
+    "phylopic_uuid": "604d2670-7bf3-4543-b8e3-fbf8e370a530",
+    "attribution": "Harold N Eyster",
+    "license": "CC BY",
+    "license_url": "https://creativecommons.org/licenses/by/3.0/",
+    "file": "crab.svg"
+  },
+  "prawn": {
+    "id": "prawn",
+    "label": "Spot Prawn",
+    "taxon": "Caridea",
+    "source": "phylopic",
+    "phylopic_uuid": "b2c051dd-1497-4cbf-a4d6-ec7ad5e5b4e5",
+    "attribution": "Elodie Jacob",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "prawn.svg"
+  },
+  "bivalve": {
+    "id": "bivalve",
+    "label": "Geoduck / Bivalve",
+    "taxon": "Panopea",
+    "source": "phylopic",
+    "phylopic_uuid": "a5656048-c212-4526-ac65-a7f421b891f8",
+    "attribution": "Harold N Eyster",
+    "license": "CC BY",
+    "license_url": "https://creativecommons.org/licenses/by/3.0/",
+    "file": "bivalve.svg"
+  },
+  "urchin": {
+    "id": "urchin",
+    "label": "Red Sea Urchin",
+    "taxon": "Strongylocentrotus",
+    "source": "phylopic",
+    "phylopic_uuid": "40b13aa6-d0b3-4854-b9ba-412a48a684bb",
+    "attribution": "Caleb M. Gordon",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "urchin.svg"
+  },
+  "octopus": {
+    "id": "octopus",
+    "label": "Giant Pacific Octopus",
+    "taxon": "Octopus",
+    "source": "phylopic",
+    "phylopic_uuid": "f400b519-3564-4183-b4bd-c3b922cc7c5e",
+    "attribution": "Margot Michaud",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "octopus.svg"
+  },
+  "abalone": {
+    "id": "abalone",
+    "label": "Pinto Abalone",
+    "taxon": "Haliotis",
+    "source": "phylopic",
+    "phylopic_uuid": "7f5b9a1c-250e-42b5-9a7d-4f9b537ac8d9",
+    "attribution": "Nikolas J. Kaplanis",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "abalone.svg"
+  },
+  "seastar": {
+    "id": "seastar",
+    "label": "Ochre Sea Star",
+    "taxon": "Pisaster ochraceus",
+    "source": "phylopic",
+    "phylopic_uuid": "f5beba8a-64a6-4820-9fdc-f42f3a5a47b9",
+    "attribution": "Nikolas J. Kaplanis",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "file": "seastar.svg"
+  }
+}

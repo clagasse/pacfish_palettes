@@ -1,0 +1,35 @@
+Package: pacfishpalettes
+Title: British Columbia and Pacific Region Marine Colour Palettes
+Version: 0.1.0
+Authors@R: 
+    person(
+      given = "DFO Pacific",
+      family = "Contributors",
+      role = c("aut", "cre"),
+      email = "pacfishpalettes@example.org"
+    )
+Description: Curated colour palettes inspired by British Columbia groundfish,
+    Pacific salmon, pelagics, commercial shellfish, and Pacific Region fisheries
+    ecosystems, alongside taxonomic/survey sets aligned with 'gfsynopsis',
+    'fishualize'-style species lookup and PhyloPic silhouettes, perceptual
+    colorblindness diagnostics, and cross-package R palette metadata.
+License: MIT + file LICENSE
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+Depends:
+    R (>= 3.5.0)
+Imports:
+    grDevices,
+    graphics,
+    stats,
+    utils
+Suggests:
+    ggplot2,
+    grid,
+    paletteer,
+    rphylopic,
+    jsonlite,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+URL: https://github.com/pacfishpalettes/pacfishpalettes
+BugReports: https://github.com/pacfishpalettes/pacfishpalettes/issues
